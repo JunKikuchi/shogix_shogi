@@ -1,4 +1,4 @@
-import 'package:shogix_shogi/shogix_shogi.dart';
+import 'package:shogix_shogi/shogi.dart';
 import 'package:test/test.dart';
 
 void main() {

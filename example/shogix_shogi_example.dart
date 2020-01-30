@@ -1,4 +1,4 @@
-import 'package:shogix_shogi/shogix_shogi.dart';
+import 'package:shogix_shogi/shogi.dart';
 
 void main() {
   var awesome = Awesome();
