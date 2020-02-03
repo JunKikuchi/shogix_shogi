@@ -11,6 +11,14 @@ class Shogi {
 
   const Shogi(this.position, this.pastPositions);
 
+  BuiltMap<Square, BuiltMap<Square, Promotion>> moves() {
+    throw UnimplementedError();
+  }
+
+  BuiltMap<BuiltSet<PieceType>, BuiltSet<Square>> drops() {
+    throw UnimplementedError();
+  }
+
   Shogi move(Square dest, Square src, bool promotion) {
     throw UnimplementedError();
   }
@@ -24,14 +32,6 @@ class Shogi {
   }
 
   Shogi timeout() {
-    throw UnimplementedError();
-  }
-
-  BuiltMap<Square, BuiltMap<Square, Promotion>> moves() {
-    throw UnimplementedError();
-  }
-
-  Map<BuiltSet<PieceType>, BuiltSet<Square>> drops() {
     throw UnimplementedError();
   }
 
@@ -68,14 +68,14 @@ enum GameOverType { Mate, Resign, Timeout, Illegal }
 class Position {
   final Color turn;
   final BuiltMap<Square, Piece> board;
-  final BuiltList<PieceType> blackStand;
-  final BuiltList<PieceType> whiteStand;
+  final BuiltMap<PieceType, int> blackStand;
+  final BuiltMap<PieceType, int> whiteStand;
 
   const Position(this.turn, this.board, this.blackStand, this.whiteStand);
 
   Position.hirate()
       : turn = Color.Black,
-        board = {
+        board = BuiltMap<Square, Piece>({
           F9R1: Piece.lance(Color.White),
           F8R1: Piece.knight(Color.White),
           F7R1: Piece.silver(Color.White),
@@ -116,9 +116,9 @@ class Position {
           F3R9: Piece.silver(Color.Black),
           F2R9: Piece.knight(Color.Black),
           F1R9: Piece.lance(Color.Black)
-        }.build(),
-        blackStand = [].build(),
-        whiteStand = [].build();
+        }),
+        blackStand = BuiltMap<PieceType, int>(),
+        whiteStand = BuiltMap<PieceType, int>();
 }
 
 const Square F9R1 = Square(File.F9, Rank.R1);
@@ -236,35 +236,41 @@ abstract class Piece {
   const Piece(this.pieceType, this.color, this.movements);
 
   factory Piece.pawn(color) {
-    return NormalPiece(PieceType.Pawn, color, [].build(), [].build());
+    return NormalPiece(
+        PieceType.Pawn, color, BuiltList<Movement>(), BuiltList<Movement>());
   }
 
   factory Piece.lance(color) {
-    return NormalPiece(PieceType.Lance, color, [].build(), [].build());
+    return NormalPiece(
+        PieceType.Lance, color, BuiltList<Movement>(), BuiltList<Movement>());
   }
 
   factory Piece.knight(color) {
-    return NormalPiece(PieceType.Knight, color, [].build(), [].build());
+    return NormalPiece(
+        PieceType.Knight, color, BuiltList<Movement>(), BuiltList<Movement>());
   }
 
   factory Piece.silver(color) {
-    return NormalPiece(PieceType.Silver, color, [].build(), [].build());
+    return NormalPiece(
+        PieceType.Silver, color, BuiltList<Movement>(), BuiltList<Movement>());
   }
 
   factory Piece.gold(color) {
-    return PromotedPiece(PieceType.Gold, color, [].build());
+    return PromotedPiece(PieceType.Gold, color, BuiltList<Movement>());
   }
 
   factory Piece.bishop(color) {
-    return NormalPiece(PieceType.Bishop, color, [].build(), [].build());
+    return NormalPiece(
+        PieceType.Bishop, color, BuiltList<Movement>(), BuiltList<Movement>());
   }
 
   factory Piece.rook(color) {
-    return NormalPiece(PieceType.Rook, color, [].build(), [].build());
+    return NormalPiece(
+        PieceType.Rook, color, BuiltList<Movement>(), BuiltList<Movement>());
   }
 
   factory Piece.king(color) {
-    return PromotedPiece(PieceType.King, color, [].build());
+    return PromotedPiece(PieceType.King, color, BuiltList<Movement>());
   }
 }
 
