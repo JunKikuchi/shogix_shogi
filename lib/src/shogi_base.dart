@@ -19,11 +19,11 @@ class Shogi {
     throw UnimplementedError();
   }
 
-  Shogi move(Square dest, Square src, bool promotion) {
+  Shogi move(Move move) {
     throw UnimplementedError();
   }
 
-  Shogi drop(Square dest, PieceType piece) {
+  Shogi drop(Drop drop) {
     throw UnimplementedError();
   }
 
@@ -44,6 +44,21 @@ enum Promotion {
   No,
   Option,
   Yes,
+}
+
+class Move {
+  final Square dest;
+  final Square src;
+  final bool promotion;
+
+  Move(this.dest, this.src, this.promotion);
+}
+
+class Drop {
+  final Square dest;
+  final PieceType piece;
+
+  Drop(this.dest, this.piece);
 }
 
 abstract class Status {

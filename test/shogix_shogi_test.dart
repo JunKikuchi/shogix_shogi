@@ -52,7 +52,7 @@ void main() {
 
       var newShogi = Shogi(newPosition, BuiltList<Position>([]));
 
-      expect(shogi.move(F5R4, F5R5, false), newShogi);
+      expect(shogi.move(Move(F5R4, F5R5, false)), newShogi);
     });
 
     test('drop', () {
@@ -65,7 +65,7 @@ void main() {
 
       var newShogi = Shogi(newPosition, BuiltList<Position>([]));
 
-      expect(shogi.drop(F4R5, PieceType.Pawn), newShogi);
+      expect(shogi.drop(Drop(F4R5, PieceType.Pawn)), newShogi);
     });
 
     test('mate', () {
