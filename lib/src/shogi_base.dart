@@ -48,19 +48,23 @@ enum Promotion {
   Yes,
 }
 
-class Move {
+abstract class Movement {
   final Square dest;
+
+  Movement(this.dest);
+}
+
+class Move extends Movement {
   final Square src;
   final bool promotion;
 
-  Move(this.dest, this.src, this.promotion);
+  Move(dest, this.src, this.promotion) : super(dest);
 }
 
-class Drop {
-  final Square dest;
+class Drop extends Movement {
   final PieceType piece;
 
-  Drop(this.dest, this.piece);
+  Drop(dest, this.piece) : super(dest);
 }
 
 abstract class Status {
