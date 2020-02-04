@@ -1,5 +1,5 @@
-import 'package:shogix_shogi/shogi.dart';
 import 'package:built_collection/built_collection.dart';
+import 'package:shogix_shogi/shogi.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -34,7 +34,7 @@ void main() {
       }
 
       var drops = BuiltMap<BuiltSet<PieceType>, BuiltSet<Square>>({
-        {PieceType.Pawn}: squares
+        BuiltSet<PieceType>({PieceType.Pawn}): BuiltSet<Square>(squares)
       });
 
       expect(shogi.drops(), drops);
