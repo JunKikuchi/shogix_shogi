@@ -44,7 +44,7 @@ void main() {
       var newPosition = Position(Color.White, {F5R4: Piece.pawn(Color.Black)},
           {PieceType.Pawn: 1}, {});
 
-      var newShogi = Shogi(newPosition, BuiltList<Position>([]));
+      var newShogi = Shogi(newPosition, []);
 
       expect(shogi.move(Move(F5R4, F5R5, false)), newShogi);
     });
@@ -56,7 +56,7 @@ void main() {
           {},
           {});
 
-      var newShogi = Shogi(newPosition, BuiltList<Position>([]));
+      var newShogi = Shogi(newPosition, []);
 
       expect(shogi.drop(Drop(F4R5, PieceType.Pawn)), newShogi);
     });
@@ -68,7 +68,7 @@ void main() {
         F5R3: Piece.pawn(Color.Black)
       }, {}, {});
 
-      shogi = Shogi(position, BuiltList<Position>([]));
+      shogi = Shogi(position, []);
       var status = GameOver(Color.Black, GameOverType.Mate);
 
       expect(shogi.status(), status);

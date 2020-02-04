@@ -4,7 +4,8 @@ class Shogi {
   final Position position;
   final Positions pastPositions;
 
-  Shogi(this.position, pastPositions) : pastPositions = pastPositions;
+  Shogi(this.position, List<Position> pastPositions)
+      : pastPositions = Positions(pastPositions);
 
   BuiltMap<Square, BuiltMap<Square, Promotion>> moves() {
     throw UnimplementedError();
