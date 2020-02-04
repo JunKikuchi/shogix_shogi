@@ -8,7 +8,7 @@ void main() {
     Shogi shogi;
 
     setUp(() {
-      position = Position(Color.Black, {F5R5: Piece.pawn(Color.Black)},
+      position = Position(Color.Black, {Square.F5R5: Piece.pawn(Color.Black)},
           {PieceType.Pawn: 1}, {});
 
       shogi = Shogi(position, []);
@@ -16,7 +16,7 @@ void main() {
 
     test('moves', () {
       var moves = BuiltMap<Square, BuiltMap<Square, Promotion>>({
-        F5R5: BuiltMap<Square, Promotion>({F5R4: Promotion.No})
+        Square.F5R5: BuiltMap<Square, Promotion>({Square.F5R4: Promotion.No})
       });
 
       expect(shogi.moves(), moves);
@@ -41,31 +41,30 @@ void main() {
     });
 
     test('move', () {
-      var newPosition = Position(Color.White, {F5R4: Piece.pawn(Color.Black)},
-          {PieceType.Pawn: 1}, {});
+      var newPosition = Position(Color.White,
+          {Square.F5R4: Piece.pawn(Color.Black)}, {PieceType.Pawn: 1}, {});
 
       var newShogi = Shogi(newPosition, []);
 
-      expect(shogi.move(Move(F5R4, F5R5, false)), newShogi);
+      expect(shogi.move(Move(Square.F5R4, Square.F5R5, false)), newShogi);
     });
 
     test('drop', () {
-      var newPosition = Position(
-          Color.White,
-          {F5R5: Piece.pawn(Color.Black), F4R5: Piece.pawn(Color.Black)},
-          {},
-          {});
+      var newPosition = Position(Color.White, {
+        Square.F5R5: Piece.pawn(Color.Black),
+        Square.F4R5: Piece.pawn(Color.Black)
+      }, {}, {});
 
       var newShogi = Shogi(newPosition, []);
 
-      expect(shogi.drop(Drop(F4R5, PieceType.Pawn)), newShogi);
+      expect(shogi.drop(Drop(Square.F4R5, PieceType.Pawn)), newShogi);
     });
 
     test('mate', () {
       position = Position(Color.White, {
-        F5R1: Piece.king(Color.White),
-        F5R2: Piece.gold(Color.Black),
-        F5R3: Piece.pawn(Color.Black)
+        Square.F5R1: Piece.king(Color.White),
+        Square.F5R2: Piece.gold(Color.Black),
+        Square.F5R3: Piece.pawn(Color.Black)
       }, {}, {});
 
       shogi = Shogi(position, []);

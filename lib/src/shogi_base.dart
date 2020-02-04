@@ -101,46 +101,46 @@ class Position {
   Position.hirate()
       : turn = Color.Black,
         board = Board({
-          F9R1: Piece.lance(Color.White),
-          F8R1: Piece.knight(Color.White),
-          F7R1: Piece.silver(Color.White),
-          F6R1: Piece.gold(Color.White),
-          F5R1: Piece.king(Color.White),
-          F4R1: Piece.gold(Color.White),
-          F3R1: Piece.silver(Color.White),
-          F2R1: Piece.knight(Color.White),
-          F1R1: Piece.lance(Color.White),
-          F8R2: Piece.rook(Color.White),
-          F2R2: Piece.bishop(Color.White),
-          F9R3: Piece.pawn(Color.White),
-          F8R3: Piece.pawn(Color.White),
-          F7R3: Piece.pawn(Color.White),
-          F6R3: Piece.pawn(Color.White),
-          F5R3: Piece.pawn(Color.White),
-          F4R3: Piece.pawn(Color.White),
-          F3R3: Piece.pawn(Color.White),
-          F2R3: Piece.pawn(Color.White),
-          F1R3: Piece.pawn(Color.White),
-          F9R7: Piece.pawn(Color.Black),
-          F8R7: Piece.pawn(Color.Black),
-          F7R7: Piece.pawn(Color.Black),
-          F6R7: Piece.pawn(Color.Black),
-          F5R7: Piece.pawn(Color.Black),
-          F4R7: Piece.pawn(Color.Black),
-          F3R7: Piece.pawn(Color.Black),
-          F2R7: Piece.pawn(Color.Black),
-          F1R7: Piece.pawn(Color.Black),
-          F8R8: Piece.bishop(Color.Black),
-          F2R8: Piece.rook(Color.Black),
-          F9R9: Piece.lance(Color.Black),
-          F8R9: Piece.knight(Color.Black),
-          F7R9: Piece.silver(Color.Black),
-          F6R9: Piece.gold(Color.Black),
-          F5R9: Piece.king(Color.Black),
-          F4R9: Piece.gold(Color.Black),
-          F3R9: Piece.silver(Color.Black),
-          F2R9: Piece.knight(Color.Black),
-          F1R9: Piece.lance(Color.Black)
+          Square.F9R1: Piece.lance(Color.White),
+          Square.F8R1: Piece.knight(Color.White),
+          Square.F7R1: Piece.silver(Color.White),
+          Square.F6R1: Piece.gold(Color.White),
+          Square.F5R1: Piece.king(Color.White),
+          Square.F4R1: Piece.gold(Color.White),
+          Square.F3R1: Piece.silver(Color.White),
+          Square.F2R1: Piece.knight(Color.White),
+          Square.F1R1: Piece.lance(Color.White),
+          Square.F8R2: Piece.rook(Color.White),
+          Square.F2R2: Piece.bishop(Color.White),
+          Square.F9R3: Piece.pawn(Color.White),
+          Square.F8R3: Piece.pawn(Color.White),
+          Square.F7R3: Piece.pawn(Color.White),
+          Square.F6R3: Piece.pawn(Color.White),
+          Square.F5R3: Piece.pawn(Color.White),
+          Square.F4R3: Piece.pawn(Color.White),
+          Square.F3R3: Piece.pawn(Color.White),
+          Square.F2R3: Piece.pawn(Color.White),
+          Square.F1R3: Piece.pawn(Color.White),
+          Square.F9R7: Piece.pawn(Color.Black),
+          Square.F8R7: Piece.pawn(Color.Black),
+          Square.F7R7: Piece.pawn(Color.Black),
+          Square.F6R7: Piece.pawn(Color.Black),
+          Square.F5R7: Piece.pawn(Color.Black),
+          Square.F4R7: Piece.pawn(Color.Black),
+          Square.F3R7: Piece.pawn(Color.Black),
+          Square.F2R7: Piece.pawn(Color.Black),
+          Square.F1R7: Piece.pawn(Color.Black),
+          Square.F8R8: Piece.bishop(Color.Black),
+          Square.F2R8: Piece.rook(Color.Black),
+          Square.F9R9: Piece.lance(Color.Black),
+          Square.F8R9: Piece.knight(Color.Black),
+          Square.F7R9: Piece.silver(Color.Black),
+          Square.F6R9: Piece.gold(Color.Black),
+          Square.F5R9: Piece.king(Color.Black),
+          Square.F4R9: Piece.gold(Color.Black),
+          Square.F3R9: Piece.silver(Color.Black),
+          Square.F2R9: Piece.knight(Color.Black),
+          Square.F1R9: Piece.lance(Color.Black)
         }),
         blackStand = Stand({}),
         whiteStand = Stand({});
@@ -158,101 +158,101 @@ class Stand {
   Stand(Map<PieceType, int> stand) : stand = BuiltMap<PieceType, int>(stand);
 }
 
-const Square F9R1 = Square(File.F9, Rank.R1);
-const Square F8R1 = Square(File.F8, Rank.R1);
-const Square F7R1 = Square(File.F7, Rank.R1);
-const Square F6R1 = Square(File.F6, Rank.R1);
-const Square F5R1 = Square(File.F5, Rank.R1);
-const Square F4R1 = Square(File.F4, Rank.R1);
-const Square F3R1 = Square(File.F3, Rank.R1);
-const Square F2R1 = Square(File.F2, Rank.R1);
-const Square F1R1 = Square(File.F1, Rank.R1);
-
-const Square F9R2 = Square(File.F9, Rank.R2);
-const Square F8R2 = Square(File.F8, Rank.R2);
-const Square F7R2 = Square(File.F7, Rank.R2);
-const Square F6R2 = Square(File.F6, Rank.R2);
-const Square F5R2 = Square(File.F5, Rank.R2);
-const Square F4R2 = Square(File.F4, Rank.R2);
-const Square F3R2 = Square(File.F3, Rank.R2);
-const Square F2R2 = Square(File.F2, Rank.R2);
-const Square F1R2 = Square(File.F1, Rank.R2);
-
-const Square F9R3 = Square(File.F9, Rank.R3);
-const Square F8R3 = Square(File.F8, Rank.R3);
-const Square F7R3 = Square(File.F7, Rank.R3);
-const Square F6R3 = Square(File.F6, Rank.R3);
-const Square F5R3 = Square(File.F5, Rank.R3);
-const Square F4R3 = Square(File.F4, Rank.R3);
-const Square F3R3 = Square(File.F3, Rank.R3);
-const Square F2R3 = Square(File.F2, Rank.R3);
-const Square F1R3 = Square(File.F1, Rank.R3);
-
-const Square F9R4 = Square(File.F9, Rank.R4);
-const Square F8R4 = Square(File.F8, Rank.R4);
-const Square F7R4 = Square(File.F7, Rank.R4);
-const Square F6R4 = Square(File.F6, Rank.R4);
-const Square F5R4 = Square(File.F5, Rank.R4);
-const Square F4R4 = Square(File.F4, Rank.R4);
-const Square F3R4 = Square(File.F3, Rank.R4);
-const Square F2R4 = Square(File.F2, Rank.R4);
-const Square F1R4 = Square(File.F1, Rank.R4);
-
-const Square F9R5 = Square(File.F9, Rank.R5);
-const Square F8R5 = Square(File.F8, Rank.R5);
-const Square F7R5 = Square(File.F7, Rank.R5);
-const Square F6R5 = Square(File.F6, Rank.R5);
-const Square F5R5 = Square(File.F5, Rank.R5);
-const Square F4R5 = Square(File.F4, Rank.R5);
-const Square F3R5 = Square(File.F3, Rank.R5);
-const Square F2R5 = Square(File.F2, Rank.R5);
-const Square F1R5 = Square(File.F1, Rank.R5);
-
-const Square F9R6 = Square(File.F9, Rank.R6);
-const Square F8R6 = Square(File.F8, Rank.R6);
-const Square F7R6 = Square(File.F7, Rank.R6);
-const Square F6R6 = Square(File.F6, Rank.R6);
-const Square F5R6 = Square(File.F5, Rank.R6);
-const Square F4R6 = Square(File.F4, Rank.R6);
-const Square F3R6 = Square(File.F3, Rank.R6);
-const Square F2R6 = Square(File.F2, Rank.R6);
-const Square F1R6 = Square(File.F1, Rank.R6);
-
-const Square F9R7 = Square(File.F9, Rank.R7);
-const Square F8R7 = Square(File.F8, Rank.R7);
-const Square F7R7 = Square(File.F7, Rank.R7);
-const Square F6R7 = Square(File.F6, Rank.R7);
-const Square F5R7 = Square(File.F5, Rank.R7);
-const Square F4R7 = Square(File.F4, Rank.R7);
-const Square F3R7 = Square(File.F3, Rank.R7);
-const Square F2R7 = Square(File.F2, Rank.R7);
-const Square F1R7 = Square(File.F1, Rank.R7);
-
-const Square F9R8 = Square(File.F9, Rank.R8);
-const Square F8R8 = Square(File.F8, Rank.R8);
-const Square F7R8 = Square(File.F7, Rank.R8);
-const Square F6R8 = Square(File.F6, Rank.R8);
-const Square F5R8 = Square(File.F5, Rank.R8);
-const Square F4R8 = Square(File.F4, Rank.R8);
-const Square F3R8 = Square(File.F3, Rank.R8);
-const Square F2R8 = Square(File.F2, Rank.R8);
-const Square F1R8 = Square(File.F1, Rank.R8);
-
-const Square F9R9 = Square(File.F9, Rank.R9);
-const Square F8R9 = Square(File.F8, Rank.R9);
-const Square F7R9 = Square(File.F7, Rank.R9);
-const Square F6R9 = Square(File.F6, Rank.R9);
-const Square F5R9 = Square(File.F5, Rank.R9);
-const Square F4R9 = Square(File.F4, Rank.R9);
-const Square F3R9 = Square(File.F3, Rank.R9);
-const Square F2R9 = Square(File.F2, Rank.R9);
-const Square F1R9 = Square(File.F1, Rank.R9);
-
 class Square {
   final File file;
   final Rank rank;
 
   const Square(this.file, this.rank);
+
+  static const F9R1 = Square(File.F9, Rank.R1);
+  static const F8R1 = Square(File.F8, Rank.R1);
+  static const F7R1 = Square(File.F7, Rank.R1);
+  static const F6R1 = Square(File.F6, Rank.R1);
+  static const F5R1 = Square(File.F5, Rank.R1);
+  static const F4R1 = Square(File.F4, Rank.R1);
+  static const F3R1 = Square(File.F3, Rank.R1);
+  static const F2R1 = Square(File.F2, Rank.R1);
+  static const F1R1 = Square(File.F1, Rank.R1);
+
+  static const F9R2 = Square(File.F9, Rank.R2);
+  static const F8R2 = Square(File.F8, Rank.R2);
+  static const F7R2 = Square(File.F7, Rank.R2);
+  static const F6R2 = Square(File.F6, Rank.R2);
+  static const F5R2 = Square(File.F5, Rank.R2);
+  static const F4R2 = Square(File.F4, Rank.R2);
+  static const F3R2 = Square(File.F3, Rank.R2);
+  static const F2R2 = Square(File.F2, Rank.R2);
+  static const F1R2 = Square(File.F1, Rank.R2);
+
+  static const F9R3 = Square(File.F9, Rank.R3);
+  static const F8R3 = Square(File.F8, Rank.R3);
+  static const F7R3 = Square(File.F7, Rank.R3);
+  static const F6R3 = Square(File.F6, Rank.R3);
+  static const F5R3 = Square(File.F5, Rank.R3);
+  static const F4R3 = Square(File.F4, Rank.R3);
+  static const F3R3 = Square(File.F3, Rank.R3);
+  static const F2R3 = Square(File.F2, Rank.R3);
+  static const F1R3 = Square(File.F1, Rank.R3);
+
+  static const F9R4 = Square(File.F9, Rank.R4);
+  static const F8R4 = Square(File.F8, Rank.R4);
+  static const F7R4 = Square(File.F7, Rank.R4);
+  static const F6R4 = Square(File.F6, Rank.R4);
+  static const F5R4 = Square(File.F5, Rank.R4);
+  static const F4R4 = Square(File.F4, Rank.R4);
+  static const F3R4 = Square(File.F3, Rank.R4);
+  static const F2R4 = Square(File.F2, Rank.R4);
+  static const F1R4 = Square(File.F1, Rank.R4);
+
+  static const F9R5 = Square(File.F9, Rank.R5);
+  static const F8R5 = Square(File.F8, Rank.R5);
+  static const F7R5 = Square(File.F7, Rank.R5);
+  static const F6R5 = Square(File.F6, Rank.R5);
+  static const F5R5 = Square(File.F5, Rank.R5);
+  static const F4R5 = Square(File.F4, Rank.R5);
+  static const F3R5 = Square(File.F3, Rank.R5);
+  static const F2R5 = Square(File.F2, Rank.R5);
+  static const F1R5 = Square(File.F1, Rank.R5);
+
+  static const F9R6 = Square(File.F9, Rank.R6);
+  static const F8R6 = Square(File.F8, Rank.R6);
+  static const F7R6 = Square(File.F7, Rank.R6);
+  static const F6R6 = Square(File.F6, Rank.R6);
+  static const F5R6 = Square(File.F5, Rank.R6);
+  static const F4R6 = Square(File.F4, Rank.R6);
+  static const F3R6 = Square(File.F3, Rank.R6);
+  static const F2R6 = Square(File.F2, Rank.R6);
+  static const F1R6 = Square(File.F1, Rank.R6);
+
+  static const F9R7 = Square(File.F9, Rank.R7);
+  static const F8R7 = Square(File.F8, Rank.R7);
+  static const F7R7 = Square(File.F7, Rank.R7);
+  static const F6R7 = Square(File.F6, Rank.R7);
+  static const F5R7 = Square(File.F5, Rank.R7);
+  static const F4R7 = Square(File.F4, Rank.R7);
+  static const F3R7 = Square(File.F3, Rank.R7);
+  static const F2R7 = Square(File.F2, Rank.R7);
+  static const F1R7 = Square(File.F1, Rank.R7);
+
+  static const F9R8 = Square(File.F9, Rank.R8);
+  static const F8R8 = Square(File.F8, Rank.R8);
+  static const F7R8 = Square(File.F7, Rank.R8);
+  static const F6R8 = Square(File.F6, Rank.R8);
+  static const F5R8 = Square(File.F5, Rank.R8);
+  static const F4R8 = Square(File.F4, Rank.R8);
+  static const F3R8 = Square(File.F3, Rank.R8);
+  static const F2R8 = Square(File.F2, Rank.R8);
+  static const F1R8 = Square(File.F1, Rank.R8);
+
+  static const F9R9 = Square(File.F9, Rank.R9);
+  static const F8R9 = Square(File.F8, Rank.R9);
+  static const F7R9 = Square(File.F7, Rank.R9);
+  static const F6R9 = Square(File.F6, Rank.R9);
+  static const F5R9 = Square(File.F5, Rank.R9);
+  static const F4R9 = Square(File.F4, Rank.R9);
+  static const F3R9 = Square(File.F3, Rank.R9);
+  static const F2R9 = Square(File.F2, Rank.R9);
+  static const F1R9 = Square(File.F1, Rank.R9);
 
   @override
   int get hashCode {
