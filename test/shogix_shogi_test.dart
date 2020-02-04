@@ -8,11 +8,8 @@ void main() {
     Shogi shogi;
 
     setUp(() {
-      position = Position(
-          Color.Black,
-          BuiltMap({F5R5: Piece.pawn(Color.Black)}),
-          BuiltMap<PieceType, int>({PieceType.Pawn: 1}),
-          BuiltMap<PieceType, int>());
+      position = Position(Color.Black, {F5R5: Piece.pawn(Color.Black)},
+          {PieceType.Pawn: 1}, {});
 
       shogi = Shogi(position, BuiltList<Position>([]));
     });
@@ -37,18 +34,15 @@ void main() {
       }
 
       var drops = BuiltMap<BuiltSet<PieceType>, BuiltSet<Square>>({
-        BuiltSet<PieceType>({PieceType.Pawn}): BuiltSet<Square>(squares)
+        {PieceType.Pawn}: squares
       });
 
       expect(shogi.drops(), drops);
     });
 
     test('move', () {
-      var newPosition = Position(
-          Color.White,
-          BuiltMap({F5R4: Piece.pawn(Color.Black)}),
-          BuiltMap<PieceType, int>({PieceType.Pawn: 1}),
-          BuiltMap<PieceType, int>());
+      var newPosition = Position(Color.White, {F5R4: Piece.pawn(Color.Black)},
+          {PieceType.Pawn: 1}, {});
 
       var newShogi = Shogi(newPosition, BuiltList<Position>([]));
 
@@ -58,10 +52,9 @@ void main() {
     test('drop', () {
       var newPosition = Position(
           Color.White,
-          BuiltMap(
-              {F5R5: Piece.pawn(Color.Black), F4R5: Piece.pawn(Color.Black)}),
-          BuiltMap<PieceType, int>(),
-          BuiltMap<PieceType, int>());
+          {F5R5: Piece.pawn(Color.Black), F4R5: Piece.pawn(Color.Black)},
+          {},
+          {});
 
       var newShogi = Shogi(newPosition, BuiltList<Position>([]));
 
@@ -69,15 +62,11 @@ void main() {
     });
 
     test('mate', () {
-      position = Position(
-          Color.White,
-          BuiltMap({
-            F5R1: Piece.king(Color.White),
-            F5R2: Piece.gold(Color.Black),
-            F5R3: Piece.pawn(Color.Black)
-          }),
-          BuiltMap<PieceType, int>(),
-          BuiltMap<PieceType, int>());
+      position = Position(Color.White, {
+        F5R1: Piece.king(Color.White),
+        F5R2: Piece.gold(Color.Black),
+        F5R3: Piece.pawn(Color.Black)
+      }, {}, {});
 
       shogi = Shogi(position, BuiltList<Position>([]));
       var status = GameOver(Color.Black, GameOverType.Mate);
