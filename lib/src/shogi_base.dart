@@ -2,9 +2,9 @@ import 'package:built_collection/built_collection.dart';
 
 class Shogi {
   final Position position;
-  final BuiltList<Position> pastPositions;
+  final Positions pastPositions;
 
-  Shogi(this.position, this.pastPositions);
+  Shogi(this.position, pastPositions) : pastPositions = pastPositions;
 
   BuiltMap<Square, BuiltMap<Square, Promotion>> moves() {
     throw UnimplementedError();
@@ -33,6 +33,13 @@ class Shogi {
   Status status() {
     throw UnimplementedError();
   }
+}
+
+class Positions {
+  final BuiltList<Position> positions;
+
+  Positions(List<Position> positions)
+      : positions = BuiltList<Position>(positions);
 }
 
 enum Promotion {

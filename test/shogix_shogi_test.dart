@@ -11,7 +11,7 @@ void main() {
       position = Position(Color.Black, {F5R5: Piece.pawn(Color.Black)},
           {PieceType.Pawn: 1}, {});
 
-      shogi = Shogi(position, BuiltList<Position>([]));
+      shogi = Shogi(position, []);
     });
 
     test('moves', () {
