@@ -263,54 +263,54 @@ class Square {
 abstract class Piece {
   final PieceType pieceType;
   final Color color;
-  final BuiltList<Movement> movements;
+  final BuiltList<PieceMovement> movements;
 
   const Piece(this.pieceType, this.color, this.movements);
 
   factory Piece.pawn(color) {
-    return NormalPiece(
-        PieceType.Pawn, color, BuiltList<Movement>(), BuiltList<Movement>());
+    return NormalPiece(PieceType.Pawn, color, BuiltList<PieceMovement>(),
+        BuiltList<PieceMovement>());
   }
 
   factory Piece.lance(color) {
-    return NormalPiece(
-        PieceType.Lance, color, BuiltList<Movement>(), BuiltList<Movement>());
+    return NormalPiece(PieceType.Lance, color, BuiltList<PieceMovement>(),
+        BuiltList<PieceMovement>());
   }
 
   factory Piece.knight(color) {
-    return NormalPiece(
-        PieceType.Knight, color, BuiltList<Movement>(), BuiltList<Movement>());
+    return NormalPiece(PieceType.Knight, color, BuiltList<PieceMovement>(),
+        BuiltList<PieceMovement>());
   }
 
   factory Piece.silver(color) {
-    return NormalPiece(
-        PieceType.Silver, color, BuiltList<Movement>(), BuiltList<Movement>());
+    return NormalPiece(PieceType.Silver, color, BuiltList<PieceMovement>(),
+        BuiltList<PieceMovement>());
   }
 
   factory Piece.gold(color) {
-    return PromotedPiece(PieceType.Gold, color, BuiltList<Movement>());
+    return PromotedPiece(PieceType.Gold, color, BuiltList<PieceMovement>());
   }
 
   factory Piece.bishop(color) {
-    return NormalPiece(
-        PieceType.Bishop, color, BuiltList<Movement>(), BuiltList<Movement>());
+    return NormalPiece(PieceType.Bishop, color, BuiltList<PieceMovement>(),
+        BuiltList<PieceMovement>());
   }
 
   factory Piece.rook(color) {
-    return NormalPiece(
-        PieceType.Rook, color, BuiltList<Movement>(), BuiltList<Movement>());
+    return NormalPiece(PieceType.Rook, color, BuiltList<PieceMovement>(),
+        BuiltList<PieceMovement>());
   }
 
   factory Piece.king(color) {
-    return PromotedPiece(PieceType.King, color, BuiltList<Movement>());
+    return PromotedPiece(PieceType.King, color, BuiltList<PieceMovement>());
   }
 }
 
 class NormalPiece extends Piece {
-  final BuiltList<Movement> promotedMovements;
+  final BuiltList<PieceMovement> promotedMovements;
 
   const NormalPiece(PieceType pieceType, Color color,
-      BuiltList<Movement> movements, this.promotedMovements)
+      BuiltList<PieceMovement> movements, this.promotedMovements)
       : super(pieceType, color, movements);
 
   PromotedPiece promote() {
@@ -320,7 +320,7 @@ class NormalPiece extends Piece {
 
 class PromotedPiece extends Piece {
   const PromotedPiece(
-      PieceType pieceType, Color color, BuiltList<Movement> movements)
+      PieceType pieceType, Color color, BuiltList<PieceMovement> movements)
       : super(pieceType, color, movements);
 }
 
@@ -332,11 +332,11 @@ enum Rank { R9, R8, R7, R6, R5, R4, R3, R2, R1 }
 
 enum PieceType { Pawn, Lance, Knight, Silver, Gold, Bishop, Rook, King }
 
-class Movement {
+class PieceMovement {
   final Direction direction;
   final MoveNumber moveNumber;
 
-  Movement(this.direction, this.moveNumber);
+  PieceMovement(this.direction, this.moveNumber);
 }
 
 enum Direction { UpLeft, Up, UpRight, Right, DownRight, Down, DownLeft, Left }
