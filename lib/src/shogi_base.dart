@@ -1,10 +1,5 @@
 import 'package:built_collection/built_collection.dart';
 
-/// Checks if you are awesome. Spoiler: you are.
-class Awesome {
-  bool get isAwesome => true;
-}
-
 class Shogi {
   final Position position;
   final BuiltList<Position> pastPositions;
