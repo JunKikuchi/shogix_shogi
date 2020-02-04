@@ -9,7 +9,7 @@ class Shogi {
   final Position position;
   final BuiltList<Position> pastPositions;
 
-  const Shogi(this.position, this.pastPositions);
+  Shogi(this.position, this.pastPositions);
 
   BuiltMap<Square, BuiltMap<Square, Promotion>> moves() {
     throw UnimplementedError();
@@ -62,20 +62,20 @@ class Drop {
 }
 
 abstract class Status {
-  const Status();
+  Status();
 }
 
 class Playing extends Status {
   final Color turn;
 
-  const Playing(this.turn);
+  Playing(this.turn);
 }
 
 class GameOver extends Status {
   final Color winner;
   final GameOverType gameOverType;
 
-  const GameOver(this.winner, this.gameOverType);
+  GameOver(this.winner, this.gameOverType);
 }
 
 enum GameOverType { Mate, Resign, Timeout, Illegal }
