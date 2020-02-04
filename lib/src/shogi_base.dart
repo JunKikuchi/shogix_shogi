@@ -82,15 +82,18 @@ enum GameOverType { Mate, Resign, Timeout, Illegal }
 
 class Position {
   final Color turn;
-  final BuiltMap<Square, Piece> board;
-  final BuiltMap<PieceType, int> blackStand;
-  final BuiltMap<PieceType, int> whiteStand;
+  final Board board;
+  final Stand blackStand;
+  final Stand whiteStand;
 
-  const Position(this.turn, this.board, this.blackStand, this.whiteStand);
+  Position(this.turn, board, blackStand, whiteStand)
+      : board = Board(board),
+        blackStand = Stand(blackStand),
+        whiteStand = Stand(whiteStand);
 
   Position.hirate()
       : turn = Color.Black,
-        board = BuiltMap<Square, Piece>({
+        board = Board({
           F9R1: Piece.lance(Color.White),
           F8R1: Piece.knight(Color.White),
           F7R1: Piece.silver(Color.White),
@@ -132,8 +135,20 @@ class Position {
           F2R9: Piece.knight(Color.Black),
           F1R9: Piece.lance(Color.Black)
         }),
-        blackStand = BuiltMap<PieceType, int>(),
-        whiteStand = BuiltMap<PieceType, int>();
+        blackStand = Stand({}),
+        whiteStand = Stand({});
+}
+
+class Board {
+  final BuiltMap<Square, Piece> board;
+
+  Board(Map<Square, Piece> board) : board = BuiltMap<Square, Piece>(board);
+}
+
+class Stand {
+  final BuiltMap<PieceType, int> stand;
+
+  Stand(Map<PieceType, int> stand) : stand = BuiltMap<PieceType, int>(stand);
 }
 
 const Square F9R1 = Square(File.F9, Rank.R1);
