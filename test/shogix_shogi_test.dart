@@ -1,4 +1,3 @@
-import 'package:built_collection/built_collection.dart';
 import 'package:shogix_shogi/shogi.dart';
 import 'package:test/test.dart';
 
@@ -15,8 +14,8 @@ void main() {
     });
 
     test('moves', () {
-      var moves = BuiltMap<Square, BuiltMap<Square, Promotion>>({
-        Square.F5R5: BuiltMap<Square, Promotion>({Square.F5R4: Promotion.No})
+      var moves = Moves({
+        Square.F5R5: {Square.F5R4: Promotion.No}
       });
 
       expect(shogi.moves(), moves);
@@ -33,8 +32,8 @@ void main() {
         }
       }
 
-      var drops = BuiltMap<BuiltSet<PieceType>, BuiltSet<Square>>({
-        BuiltSet<PieceType>({PieceType.Pawn}): BuiltSet<Square>(squares)
+      var drops = Drops({
+        {PieceType.Pawn}: squares
       });
 
       expect(shogi.drops(), drops);

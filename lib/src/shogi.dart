@@ -11,11 +11,11 @@ class Shogi {
   Shogi(this.position, List<Position> pastPositions)
       : pastPositions = Positions(pastPositions);
 
-  BuiltMap<Square, BuiltMap<Square, Promotion>> moves() {
+  Moves moves() {
     throw UnimplementedError();
   }
 
-  BuiltMap<BuiltSet<PieceType>, BuiltSet<Square>> drops() {
+  Drops drops() {
     throw UnimplementedError();
   }
 
@@ -38,6 +38,20 @@ class Shogi {
   Status status() {
     throw UnimplementedError();
   }
+}
+
+class Moves {
+  final BuiltMap<Square, BuiltMap<Square, Promotion>> moves;
+
+  Moves(Map<Square, Map<Square, Promotion>> moves)
+      : moves = BuiltMap<Square, BuiltMap<Square, Promotion>>(moves);
+}
+
+class Drops {
+  final BuiltMap<BuiltSet<PieceType>, BuiltSet<Square>> drops;
+
+  Drops(Map<Set<PieceType>, Set<Square>> drops)
+      : drops = BuiltMap<BuiltSet<PieceType>, BuiltSet<Square>>(drops);
 }
 
 enum Promotion {
