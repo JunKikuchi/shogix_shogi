@@ -1,8 +1,4 @@
-import 'package:built_collection/built_collection.dart';
 import 'position.dart';
-import 'square.dart';
-import 'piece.dart';
-import 'color.dart';
 
 class Shogi {
   final Position position;
@@ -12,11 +8,17 @@ class Shogi {
       : pastPositions = Positions(pastPositions);
 
   Moves moves() {
-    throw UnimplementedError();
+    if (status() is GameOver) {
+      return Moves();
+    }
+    return position.moves().removeRepetition(pastPositions);
   }
 
   Drops drops() {
-    throw UnimplementedError();
+    if (status() is GameOver) {
+      return Drops();
+    }
+    return position.drops().removeRepetition(pastPositions);
   }
 
   Shogi move(Move move) {
@@ -36,64 +38,6 @@ class Shogi {
   }
 
   Status status() {
-    throw UnimplementedError();
+    return position.status();
   }
 }
-
-class Moves {
-  final BuiltMap<Square, BuiltMap<Square, Promotion>> moves;
-
-  Moves(Map<Square, Map<Square, Promotion>> moves)
-      : moves = BuiltMap<Square, BuiltMap<Square, Promotion>>(moves);
-}
-
-class Drops {
-  final BuiltMap<BuiltSet<PieceType>, BuiltSet<Square>> drops;
-
-  Drops(Map<Set<PieceType>, Set<Square>> drops)
-      : drops = BuiltMap<BuiltSet<PieceType>, BuiltSet<Square>>(drops);
-}
-
-enum Promotion {
-  No,
-  Option,
-  Yes,
-}
-
-abstract class Movement {
-  final Square dest;
-
-  Movement(this.dest);
-}
-
-class Move extends Movement {
-  final Square src;
-  final bool promotion;
-
-  Move(dest, this.src, this.promotion) : super(dest);
-}
-
-class Drop extends Movement {
-  final PieceType piece;
-
-  Drop(dest, this.piece) : super(dest);
-}
-
-abstract class Status {
-  Status();
-}
-
-class Playing extends Status {
-  final Color turn;
-
-  Playing(this.turn);
-}
-
-class GameOver extends Status {
-  final Color winner;
-  final GameOverType gameOverType;
-
-  GameOver(this.winner, this.gameOverType);
-}
-
-enum GameOverType { Mate, Resign, Timeout, Illegal }

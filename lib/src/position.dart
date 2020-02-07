@@ -61,6 +61,26 @@ class Position {
         }),
         blackStand = Stand({}),
         whiteStand = Stand({});
+
+  Moves moves() {
+    throw UnimplementedError();
+  }
+
+  Drops drops() {
+    throw UnimplementedError();
+  }
+
+  Position move(Move move) {
+    throw UnimplementedError();
+  }
+
+  Position drop(Drop drop) {
+    throw UnimplementedError();
+  }
+
+  Status status() {
+    throw UnimplementedError();
+  }
 }
 
 class Board {
@@ -81,3 +101,71 @@ class Positions {
   Positions(List<Position> positions)
       : positions = BuiltList<Position>(positions);
 }
+
+class Moves {
+  final BuiltMap<Square, BuiltMap<Square, Promotion>> moves;
+
+  Moves([Map<Square, Map<Square, Promotion>> moves = const {}])
+      : moves = BuiltMap<Square, BuiltMap<Square, Promotion>>(
+            moves.map((k, v) => MapEntry(k, BuiltMap<Square, Promotion>(v))));
+
+  Moves removeRepetition(Positions positions) {
+    throw UnimplementedError();
+  }
+}
+
+class Drops {
+  final BuiltMap<BuiltSet<PieceType>, BuiltSet<Square>> drops;
+
+  Drops([Map<Set<PieceType>, Set<Square>> drops = const {}])
+      : drops = BuiltMap<BuiltSet<PieceType>, BuiltSet<Square>>(drops.map(
+            (k, v) => MapEntry(BuiltSet<PieceType>(k), BuiltSet<Square>(v))));
+
+  Drops removeRepetition(Positions positions) {
+    throw UnimplementedError();
+  }
+}
+
+enum Promotion {
+  No,
+  Option,
+  Yes,
+}
+
+abstract class Movement {
+  final Square dest;
+
+  Movement(this.dest);
+}
+
+class Move extends Movement {
+  final Square src;
+  final bool promotion;
+
+  Move(dest, this.src, this.promotion) : super(dest);
+}
+
+class Drop extends Movement {
+  final PieceType piece;
+
+  Drop(dest, this.piece) : super(dest);
+}
+
+abstract class Status {
+  Status();
+}
+
+class Playing extends Status {
+  final Color turn;
+
+  Playing(this.turn);
+}
+
+class GameOver extends Status {
+  final Color winner;
+  final GameOverType gameOverType;
+
+  GameOver(this.winner, this.gameOverType);
+}
+
+enum GameOverType { Mate, Resign, Timeout, Illegal }
