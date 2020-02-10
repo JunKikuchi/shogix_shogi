@@ -96,10 +96,15 @@ class Stand {
 }
 
 class Positions {
-  final BuiltList<Position> positions;
+  final List<Position> positions;
 
-  Positions(List<Position> positions)
-      : positions = BuiltList<Position>(positions);
+  const Positions([this.positions = const []]);
+
+  Positions add(Position position) {
+    var newPositions = List.from(positions);
+    newPositions.add(position);
+    return Positions(newPositions);
+  }
 }
 
 class Moves {

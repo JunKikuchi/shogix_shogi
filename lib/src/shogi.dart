@@ -4,8 +4,7 @@ class Shogi {
   final Position position;
   final Positions pastPositions;
 
-  Shogi(this.position, List<Position> pastPositions)
-      : pastPositions = Positions(pastPositions);
+  Shogi(this.position, [this.pastPositions = const Positions()]);
 
   Moves moves() {
     if (status() is GameOver) {
@@ -22,11 +21,17 @@ class Shogi {
   }
 
   Shogi move(Move move) {
-    throw UnimplementedError();
+    if (status() is GameOver) {
+      return null;
+    }
+    return Shogi(position.move(move), pastPositions.add(position));
   }
 
   Shogi drop(Drop drop) {
-    throw UnimplementedError();
+    if (status() is GameOver) {
+      return null;
+    }
+    return Shogi(position.drop(drop), pastPositions.add(position));
   }
 
   Shogi resign() {
