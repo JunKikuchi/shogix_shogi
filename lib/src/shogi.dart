@@ -7,52 +7,43 @@ class Shogi {
   Shogi(this.position, [this.pastPositions = const Positions()]);
 
   Moves moves() {
-    if (status() is GameOver) {
-      return Moves();
-    }
-    return position.moves().removeRepetition(pastPositions);
+    return _guard(position.moves().removeRepetition(pastPositions), Moves());
   }
 
   Drops drops() {
-    if (status() is GameOver) {
-      return Drops();
-    }
-    return position.drops().removeRepetition(pastPositions);
+    return _guard(position.drops().removeRepetition(pastPositions), Drops());
   }
 
   Shogi move(Move move) {
-    if (status() is GameOver) {
-      return null;
-    }
-    return Shogi(
-        moves().contains(move) ? position.move(move) : position.illegal(),
-        pastPositions.add(position));
+    return _nextShogi(
+        moves().contains(move) ? position.move(move) : position.illegal());
   }
 
   Shogi drop(Drop drop) {
-    if (status() is GameOver) {
-      return null;
-    }
-    return Shogi(
-        drops().contains(drop) ? position.drop(drop) : position.illegal(),
-        pastPositions.add(position));
+    return _nextShogi(
+        drops().contains(drop) ? position.drop(drop) : position.illegal());
   }
 
   Shogi resign() {
-    if (status() is GameOver) {
-      return null;
-    }
-    return Shogi(position.resign(), pastPositions.add(position));
+    return _nextShogi(position.resign());
   }
 
   Shogi timeout() {
-    if (status() is GameOver) {
-      return null;
-    }
-    return Shogi(position.timeout(), pastPositions.add(position));
+    return _nextShogi(position.timeout());
   }
 
   Status status() {
     return position.status();
+  }
+
+  dynamic _guard(next, [gameover]) {
+    if (status() is GameOver) {
+      return gameover;
+    }
+    return next;
+  }
+
+  Shogi _nextShogi(Position newPosition) {
+    return _guard(Shogi(newPosition, pastPositions.add(position)));
   }
 }
