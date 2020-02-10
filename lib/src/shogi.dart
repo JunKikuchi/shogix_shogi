@@ -24,14 +24,18 @@ class Shogi {
     if (status() is GameOver) {
       return null;
     }
-    return Shogi(position.move(move), pastPositions.add(position));
+    return Shogi(
+        moves().contains(move) ? position.move(move) : position.illegal(),
+        pastPositions.add(position));
   }
 
   Shogi drop(Drop drop) {
     if (status() is GameOver) {
       return null;
     }
-    return Shogi(position.drop(drop), pastPositions.add(position));
+    return Shogi(
+        drops().contains(drop) ? position.drop(drop) : position.illegal(),
+        pastPositions.add(position));
   }
 
   Shogi resign() {

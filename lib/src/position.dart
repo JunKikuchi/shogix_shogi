@@ -78,6 +78,10 @@ class Position {
     throw UnimplementedError();
   }
 
+  Position illegal() {
+    throw UnimplementedError();
+  }
+
   Status status() {
     throw UnimplementedError();
   }
@@ -117,6 +121,10 @@ class Moves {
   Moves removeRepetition(Positions positions) {
     throw UnimplementedError();
   }
+
+  bool contains(Move move) {
+    throw UnimplementedError();
+  }
 }
 
 class Drops {
@@ -127,6 +135,10 @@ class Drops {
             (k, v) => MapEntry(BuiltSet<PieceType>(k), BuiltSet<Square>(v))));
 
   Drops removeRepetition(Positions positions) {
+    throw UnimplementedError();
+  }
+
+  bool contains(Drop drop) {
     throw UnimplementedError();
   }
 }
