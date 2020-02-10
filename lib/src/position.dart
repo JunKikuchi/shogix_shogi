@@ -82,6 +82,14 @@ class Position {
     throw UnimplementedError();
   }
 
+  Position resign() {
+    throw UnimplementedError();
+  }
+
+  Position timeout() {
+    throw UnimplementedError();
+  }
+
   Status status() {
     throw UnimplementedError();
   }

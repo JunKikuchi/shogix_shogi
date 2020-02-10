@@ -39,11 +39,17 @@ class Shogi {
   }
 
   Shogi resign() {
-    throw UnimplementedError();
+    if (status() is GameOver) {
+      return null;
+    }
+    return Shogi(position.resign(), pastPositions.add(position));
   }
 
   Shogi timeout() {
-    throw UnimplementedError();
+    if (status() is GameOver) {
+      return null;
+    }
+    return Shogi(position.timeout(), pastPositions.add(position));
   }
 
   Status status() {
