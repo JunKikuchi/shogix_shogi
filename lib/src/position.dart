@@ -62,11 +62,11 @@ class Position {
         blackStand = Stand({}),
         whiteStand = Stand({});
 
-  Moves moves() {
+  Movables movables() {
     throw UnimplementedError();
   }
 
-  Drops drops() {
+  Droppables droppables() {
     throw UnimplementedError();
   }
 
@@ -119,14 +119,14 @@ class Positions {
   }
 }
 
-class Moves {
-  final BuiltMap<Square, BuiltMap<Square, Promotion>> moves;
+class Movables {
+  final BuiltMap<Square, BuiltMap<Square, Promotable>> moves;
 
-  Moves([Map<Square, Map<Square, Promotion>> moves = const {}])
-      : moves = BuiltMap<Square, BuiltMap<Square, Promotion>>(
-            moves.map((k, v) => MapEntry(k, BuiltMap<Square, Promotion>(v))));
+  Movables([Map<Square, Map<Square, Promotable>> moves = const {}])
+      : moves = BuiltMap<Square, BuiltMap<Square, Promotable>>(
+            moves.map((k, v) => MapEntry(k, BuiltMap<Square, Promotable>(v))));
 
-  Moves removeRepetition(Positions positions) {
+  Movables removeRepetition(Positions positions) {
     throw UnimplementedError();
   }
 
@@ -135,14 +135,14 @@ class Moves {
   }
 }
 
-class Drops {
+class Droppables {
   final BuiltMap<BuiltSet<PieceType>, BuiltSet<Square>> drops;
 
-  Drops([Map<Set<PieceType>, Set<Square>> drops = const {}])
+  Droppables([Map<Set<PieceType>, Set<Square>> drops = const {}])
       : drops = BuiltMap<BuiltSet<PieceType>, BuiltSet<Square>>(drops.map(
             (k, v) => MapEntry(BuiltSet<PieceType>(k), BuiltSet<Square>(v))));
 
-  Drops removeRepetition(Positions positions) {
+  Droppables removeRepetition(Positions positions) {
     throw UnimplementedError();
   }
 
@@ -151,7 +151,7 @@ class Drops {
   }
 }
 
-enum Promotion {
+enum Promotable {
   No,
   Option,
   Yes,

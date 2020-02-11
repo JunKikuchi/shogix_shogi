@@ -6,22 +6,24 @@ class Shogi {
 
   Shogi(this.position, [this.pastPositions = const Positions()]);
 
-  Moves moves() {
-    return _guard(position.moves().removeRepetition(pastPositions), Moves());
+  Movables movables() {
+    return _guard(
+        position.movables().removeRepetition(pastPositions), Movables());
   }
 
-  Drops drops() {
-    return _guard(position.drops().removeRepetition(pastPositions), Drops());
+  Droppables droppables() {
+    return _guard(
+        position.droppables().removeRepetition(pastPositions), Droppables());
   }
 
   Shogi move(Move move) {
     return _nextShogi(
-        moves().contains(move) ? position.move(move) : position.illegal());
+        movables().contains(move) ? position.move(move) : position.illegal());
   }
 
   Shogi drop(Drop drop) {
     return _nextShogi(
-        drops().contains(drop) ? position.drop(drop) : position.illegal());
+        droppables().contains(drop) ? position.drop(drop) : position.illegal());
   }
 
   Shogi resign() {

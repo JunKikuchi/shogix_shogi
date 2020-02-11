@@ -13,15 +13,15 @@ void main() {
       shogi = Shogi(position);
     });
 
-    test('moves', () {
-      var moves = Moves({
-        Square.F5R5: {Square.F5R4: Promotion.No}
+    test('movables', () {
+      var movables = Movables({
+        Square.F5R5: {Square.F5R4: Promotable.No}
       });
 
-      expect(shogi.moves(), moves);
+      expect(shogi.movables(), movables);
     });
 
-    test('drops', () {
+    test('droppables', () {
       var squares = <Square>{};
       for (var file in File.values) {
         if (file == File.F5) {
@@ -32,11 +32,11 @@ void main() {
         }
       }
 
-      var drops = Drops({
+      var droppables = Droppables({
         {PieceType.Pawn}: squares
       });
 
-      expect(shogi.drops(), drops);
+      expect(shogi.droppables(), droppables);
     });
 
     test('move', () {
