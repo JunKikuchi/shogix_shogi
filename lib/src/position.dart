@@ -1,7 +1,10 @@
 import 'package:built_collection/built_collection.dart';
 import 'color.dart';
+import 'board.dart';
+import 'stand.dart';
 import 'square.dart';
 import 'piece.dart';
+import 'status.dart';
 
 class Position {
   final Color turn;
@@ -95,18 +98,6 @@ class Position {
   }
 }
 
-class Board {
-  final BuiltMap<Square, Piece> board;
-
-  Board(Map<Square, Piece> board) : board = BuiltMap<Square, Piece>(board);
-}
-
-class Stand {
-  final BuiltMap<PieceType, int> stand;
-
-  Stand(Map<PieceType, int> stand) : stand = BuiltMap<PieceType, int>(stand);
-}
-
 class Positions {
   final List<Position> positions;
 
@@ -171,22 +162,3 @@ class Drop {
 
   Drop(this.dest, this.piece);
 }
-
-abstract class Status {
-  Status();
-}
-
-class Playing extends Status {
-  final Color turn;
-
-  Playing(this.turn);
-}
-
-class GameOver extends Status {
-  final Color winner;
-  final GameOverType gameOverType;
-
-  GameOver(this.winner, this.gameOverType);
-}
-
-enum GameOverType { Mate, Resign, Timeout, Illegal }

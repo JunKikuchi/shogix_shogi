@@ -1,4 +1,5 @@
 import 'position.dart';
+import 'status.dart';
 
 class Shogi {
   final Position position;
