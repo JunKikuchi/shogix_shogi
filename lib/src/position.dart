@@ -66,11 +66,12 @@ class Position {
         whiteStand = Stand({});
 
   Movables movables() {
-    throw UnimplementedError();
+    return board.movables(turn);
   }
 
   Droppables droppables() {
-    throw UnimplementedError();
+    return board.droppables(
+        turn, turn == Color.Black ? blackStand : whiteStand);
   }
 
   Position move(Move move) {
