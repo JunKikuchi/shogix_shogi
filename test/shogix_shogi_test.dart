@@ -7,8 +7,11 @@ void main() {
     Shogi shogi;
 
     setUp(() {
-      position = Position(Color.Black, {Square.F5R5: Piece.pawn(Color.Black)},
-          {PieceType.Pawn: 1}, {});
+      position = Position(Color.Black, {
+        Square.F5R5: Piece.pawn(Color.Black)
+      }, {
+        Color.Black: {PieceType.Pawn: 1}
+      });
 
       shogi = Shogi(position);
     });
@@ -40,8 +43,11 @@ void main() {
     });
 
     test('move', () {
-      var newPosition = Position(Color.White,
-          {Square.F5R4: Piece.pawn(Color.Black)}, {PieceType.Pawn: 1}, {});
+      var newPosition = Position(Color.White, {
+        Square.F5R4: Piece.pawn(Color.Black)
+      }, {
+        Color.Black: {PieceType.Pawn: 1}
+      });
 
       var newShogi = Shogi(newPosition);
 
@@ -52,7 +58,7 @@ void main() {
       var newPosition = Position(Color.White, {
         Square.F5R5: Piece.pawn(Color.Black),
         Square.F4R5: Piece.pawn(Color.Black)
-      }, {}, {});
+      });
 
       var newShogi = Shogi(newPosition);
 
@@ -64,7 +70,7 @@ void main() {
         Square.F5R1: Piece.king(Color.White),
         Square.F5R2: Piece.gold(Color.Black),
         Square.F5R3: Piece.pawn(Color.Black)
-      }, {}, {});
+      });
 
       shogi = Shogi(position);
       var status = GameOver(Color.Black, GameOverType.Mate);

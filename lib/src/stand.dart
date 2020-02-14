@@ -4,5 +4,6 @@ import 'piece.dart';
 class Stand {
   final BuiltMap<PieceType, int> stand;
 
-  Stand(Map<PieceType, int> stand) : stand = BuiltMap<PieceType, int>(stand);
+  Stand([Map<PieceType, int> stand = const {}])
+      : stand = BuiltMap<PieceType, int>(stand);
 }

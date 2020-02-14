@@ -9,14 +9,13 @@ import 'status.dart';
 class Position {
   final Color turn;
   final Board board;
-  final Stand blackStand;
-  final Stand whiteStand;
+  final Map<Color, Stand> stands;
 
-  Position(this.turn, Map<Square, Piece> board, Map<PieceType, int> blackStand,
-      Map<PieceType, int> whiteStand)
+  Position(this.turn, Map<Square, Piece> board,
+      [Map<Color, Map<PieceType, int>> stands = const {}])
       : board = Board(board),
-        blackStand = Stand(blackStand),
-        whiteStand = Stand(whiteStand);
+        stands = Map.fromEntries({Color.Black, Color.White}
+            .map((color) => MapEntry(color, Stand(stands[color] ?? {}))));
 
   Position.hirate()
       : turn = Color.Black,
@@ -62,16 +61,14 @@ class Position {
           Square.F2R9: Piece.knight(Color.Black),
           Square.F1R9: Piece.lance(Color.Black)
         }),
-        blackStand = Stand({}),
-        whiteStand = Stand({});
+        stands = {Color.Black: Stand(), Color.White: Stand()};
 
   Movables movables() {
     return board.movables(turn);
   }
 
   Droppables droppables() {
-    return board.droppables(
-        turn, turn == Color.Black ? blackStand : whiteStand);
+    return board.droppables(turn, stands[turn]);
   }
 
   Position move(Move move) {
